@@ -33,6 +33,7 @@ flutter:
 
   assets:
     - assets/images/app_icon.png
+    - assets/images/splash.png
     - assets/images/cupping.png
   #   - images/a_dot_ham.jpeg
 

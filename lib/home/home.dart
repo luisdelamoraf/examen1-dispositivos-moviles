@@ -5,8 +5,7 @@ import 'package:estructura_practica_1/home/item_home.dart';
 import 'package:estructura_practica_1/profile.dart';
 
 class Home extends StatefulWidget {
-  final String title;
-  Home({Key key, this.title}) : super(key: key);
+  Home({Key key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -17,7 +16,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Inicio"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.person),
