@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
+import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
@@ -12,6 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final cart = ProductCart(productsInCart: []);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +33,10 @@ class _HomeState extends State<Home> {
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => Cart(productsList: cart.productsInCart)));
+            },
           )
         ],
       ),
@@ -68,6 +75,7 @@ class _HomeState extends State<Home> {
         builder: (context) {
           return HotDrinksPage(
             drinksList: ProductRepository.loadProducts(ProductType.BEBIDAS),
+            cart: cart.productsInCart,
           );
         },
       ),

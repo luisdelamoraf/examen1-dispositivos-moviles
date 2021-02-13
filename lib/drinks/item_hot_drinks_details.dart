@@ -1,9 +1,15 @@
-import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 
 class ItemHotDrinksDetails extends StatefulWidget {
-  ItemHotDrinksDetails({Key key}) : super(key: key);
+  final List<ProductItemCart> cart;
+
+  ItemHotDrinksDetails({
+    Key key,
+    @required this.cart,
+  }) : super(key: key);
 
   @override
   _ItemHotDrinksDetailsState createState() => _ItemHotDrinksDetailsState();
@@ -187,12 +193,17 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           style: TextStyle(
                               fontFamily: "OpenSans",
                               fontWeight: FontWeight.w100,
-                              color: Colors.white)
-                              ),
+                              color: Colors.white)),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Cart(productsList: [],),
-                          settings: RouteSettings()));
+                        widget.cart.add(ProductItemCart(
+                          productTitle: item.productTitle,
+                          productImage: item.productImage,
+                          productAmount: 1,
+                          productPrice: item.productPrice,
+                          typeOfProduct: ProductType.BEBIDAS,
+                          productSize: item.productSize.toString(),
+                        ));
+                        Navigator.of(context).pop();
                       },
                     ),
                     RaisedButton(
@@ -201,8 +212,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           style: TextStyle(
                               fontFamily: "OpenSans",
                               fontWeight: FontWeight.w100,
-                              color: Colors.white)
-                              ),
+                              color: Colors.white)),
                       onPressed: () {},
                     )
                   ],

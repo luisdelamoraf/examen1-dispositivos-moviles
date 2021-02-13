@@ -9,9 +9,10 @@ class ProductRepository {
     // ----------------------       Tazas      ----------------------------//
     // ----------------------              ----------------------------//
 
-    //if (prodType == ProductType.POSTRES) {
+    if (prodType == ProductType.POSTRES) {
     // TODO: Agregar al menos 5 productos "postres"
-    //}
+    
+    }
 
     // ----------------------              ----------------------------//
     // ----------------------       Granos      ----------------------------//
