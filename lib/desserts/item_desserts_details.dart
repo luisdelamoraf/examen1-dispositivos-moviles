@@ -1,28 +1,28 @@
 import 'package:estructura_practica_1/cart/payment.dart';
-import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 
-class ItemHotDrinksDetails extends StatefulWidget {
+class ItemDessertsDetails extends StatefulWidget {
   final List<ProductItemCart> cart;
 
-  ItemHotDrinksDetails({
+  ItemDessertsDetails({
     Key key,
     @required this.cart,
   }) : super(key: key);
 
   @override
-  _ItemHotDrinksDetailsState createState() => _ItemHotDrinksDetailsState();
+  _ItemDessertsDetailsState createState() => _ItemDessertsDetailsState();
 }
 
-class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
+class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
   bool sizeCH = false;
   bool sizeM = true;
   bool sizeG = false;
   @override
   Widget build(BuildContext context) {
-    ProductHotDrinks item = ModalRoute.of(context).settings.arguments;
+    ProductDesserts item = ModalRoute.of(context).settings.arguments;
     item = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
@@ -116,70 +116,6 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                   ),
                 ]),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: ChoiceChip(
-                    label: Text("Chico",
-                        style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontWeight: FontWeight.w100)),
-                    selected: sizeCH,
-                    onSelected: (bool selected) {
-                      setState(() {
-                        sizeCH = true;
-                        sizeM = false;
-                        sizeG = false;
-                        item.productSize = ProductSize.CH;
-                        item.productPrice = item.productPriceCalculator();
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: ChoiceChip(
-                    label: Text("Mediano",
-                        style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontWeight: FontWeight.w100)),
-                    selected: sizeM,
-                    onSelected: (bool selected) {
-                      setState(() {
-                        sizeCH = false;
-                        sizeM = true;
-                        sizeG = false;
-                        item.productSize = ProductSize.M;
-                        item.productPrice = item.productPriceCalculator();
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: ChoiceChip(
-                    label: Text("Grande",
-                        style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontWeight: FontWeight.w100)),
-                    selected: sizeG,
-                    onSelected: (bool selected) {
-                      setState(() {
-                        sizeCH = false;
-                        sizeM = false;
-                        sizeG = true;
-                        item.productSize = ProductSize.G;
-                        item.productPrice = item.productPriceCalculator();
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
           Expanded(
             child: Container(
               alignment: Alignment.bottomCenter,
@@ -202,7 +138,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           productAmount: 1,
                           productPrice: item.productPrice,
                           typeOfProduct: ProductType.BEBIDAS,
-                          productSize: item.productSize.toString(),
+                          productSize: "Unico",
                         ));
                         Navigator.of(context).pop();
                       },

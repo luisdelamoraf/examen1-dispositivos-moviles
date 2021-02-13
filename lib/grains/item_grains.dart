@@ -1,30 +1,30 @@
-import 'package:estructura_practica_1/drinks/item_hot_drinks_details.dart';
+import 'package:estructura_practica_1/grains/item_grains_details.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_grains.dart';
 
-class ItemHotDrinks extends StatefulWidget {
-  final ProductHotDrinks drink;
+class ItemGrains extends StatefulWidget {
+  final ProductGrains grain;
   final List<ProductItemCart> cart;
-  ItemHotDrinks({
+  ItemGrains({
     Key key,
-    @required this.drink,
+    @required this.grain,
     @required this.cart,
   }) : super(key: key);
 
   @override
-  _ItemHotDrinksState createState() => _ItemHotDrinksState();
+  _ItemGrainsState createState() => _ItemGrainsState();
 }
 
-class _ItemHotDrinksState extends State<ItemHotDrinks> {
+class _ItemGrainsState extends State<ItemGrains> {
   @override
   Widget build(BuildContext context) {
-    print(widget.drink.productPriceCalculator);
+    print(widget.grain.productPriceCalculator);
     return FlatButton(
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ItemHotDrinksDetails(cart: widget.cart),
-            settings: RouteSettings(arguments: widget.drink)));
+            builder: (context) => ItemGrainsDetails(cart: widget.cart),
+            settings: RouteSettings(arguments: widget.grain)));
       },
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -52,21 +52,21 @@ class _ItemHotDrinksState extends State<ItemHotDrinks> {
                             fontSize: 18,
                             fontFamily: "OpenSans",
                             fontWeight: FontWeight.w100)),
-                    Text("${widget.drink.productTitle}",
+                    Text("${widget.grain.productTitle}",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontFamily: "OpenSans",
                             fontWeight: FontWeight.w100)),
                     Text(
-                      "\$${widget.drink.productPrice}",
+                      "\$${widget.grain.productPrice}",
                       style: TextStyle(fontSize: 26, fontFamily: "OpenSans", fontWeight: FontWeight.w400),
                     )
                   ],
                 ),
               ),
               Image.network(
-                "${widget.drink.productImage}",
+                "${widget.grain.productImage}",
                 height: 150,
                 width: 150,
               ),
@@ -75,12 +75,12 @@ class _ItemHotDrinksState extends State<ItemHotDrinks> {
                 child: IconButton(
                   icon: Icon(
                     Icons.favorite,
-                    color: widget.drink.liked
+                    color: widget.grain.liked
                         ? Colors.red[800]
                         : Color(0xff121B22),
                   ),
                   onPressed: () {
-                    widget.drink.liked = !widget.drink.liked;
+                    widget.grain.liked = !widget.grain.liked;
                     setState(() {});
                   },
                 ),

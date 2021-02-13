@@ -1,5 +1,7 @@
 import 'package:estructura_practica_1/cart/cart.dart';
+import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
+import 'package:estructura_practica_1/grains/grains_page.dart';
 import 'package:estructura_practica_1/models/product_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +17,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final cart = ProductCart(productsInCart: []);
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Inicio"),
         actions: <Widget>[
@@ -49,18 +53,32 @@ class _HomeState extends State<Home> {
               image: "https://i.imgur.com/XJ0y9qs.png",
             ),
           ),
-          ItemHome(
-            title: "Postres",
-            image: "https://i.imgur.com/fI7Tezv.png",
+          GestureDetector(
+            onTap: _openDessertPage,
+            child: ItemHome(
+              title: "Postres",
+              image: "https://i.imgur.com/fI7Tezv.png",
+            ),
           ),
-          ItemHome(
-            title: "Granos",
-            image: "https://i.imgur.com/5MZocC1.png",
+          GestureDetector(
+            onTap:  _openGrainsPage,
+            child: ItemHome(
+              title: "Granos",
+              image: "https://i.imgur.com/5MZocC1.png",
+            ),
           ),
-          ItemHome(
-            // TODO: Al hacer clic, que muestre un snackbar de "Proximamente"
-            title: "Tazas",
-            image: "https://i.imgur.com/fMjtSpy.png",
+          GestureDetector(
+            onTap: (){
+               _scaffoldKey.currentState
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(
+                                  SnackBar(content: Text("Proximamente")));
+            },
+            child: ItemHome(
+              // TODO: Al hacer clic, que muestre un snackbar de "Proximamente"
+              title: "Tazas",
+              image: "https://i.imgur.com/fMjtSpy.png",
+            ),
           ),
         ],
       ),
@@ -68,8 +86,6 @@ class _HomeState extends State<Home> {
   }
 
   void _openHotDrinksPage() {
-    // TODO: completar en navigator pasando los parametros a la pagina de HotDrinksPage
-
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {
@@ -83,14 +99,28 @@ class _HomeState extends State<Home> {
   }
 
   void _openGrainsPage() {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => null),
+Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return GrainsPage(
+            grainsList: ProductRepository.loadProducts(ProductType.GRANO),
+            cart: cart.productsInCart,
+          );
+        },
+      ),
     );
   }
 
   void _openDessertPage() {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => null),
+      MaterialPageRoute(
+        builder: (context) {
+          return DessertsPage(
+            dessertsList: ProductRepository.loadProducts(ProductType.POSTRES),
+            cart: cart.productsInCart,
+          );
+        },
+      ),
     );
   }
 }

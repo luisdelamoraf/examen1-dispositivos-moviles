@@ -1,28 +1,28 @@
 import 'package:estructura_practica_1/cart/payment.dart';
-import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_grains.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 
-class ItemHotDrinksDetails extends StatefulWidget {
+class ItemGrainsDetails extends StatefulWidget {
   final List<ProductItemCart> cart;
 
-  ItemHotDrinksDetails({
+  ItemGrainsDetails({
     Key key,
     @required this.cart,
   }) : super(key: key);
 
   @override
-  _ItemHotDrinksDetailsState createState() => _ItemHotDrinksDetailsState();
+  _ItemGrainsDetailsState createState() => _ItemGrainsDetailsState();
 }
 
-class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
+class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
   bool sizeCH = false;
   bool sizeM = true;
   bool sizeG = false;
   @override
   Widget build(BuildContext context) {
-    ProductHotDrinks item = ModalRoute.of(context).settings.arguments;
+    ProductGrains item = ModalRoute.of(context).settings.arguments;
     item = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
@@ -123,7 +123,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: ChoiceChip(
-                    label: Text("Chico",
+                    label: Text("Cuarto",
                         style: TextStyle(
                             fontFamily: "OpenSans",
                             fontWeight: FontWeight.w100)),
@@ -133,7 +133,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                         sizeCH = true;
                         sizeM = false;
                         sizeG = false;
-                        item.productSize = ProductSize.CH;
+                        item.productWeight = ProductWeight.CUARTO;
                         item.productPrice = item.productPriceCalculator();
                       });
                     },
@@ -142,7 +142,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: ChoiceChip(
-                    label: Text("Mediano",
+                    label: Text("Kilo",
                         style: TextStyle(
                             fontFamily: "OpenSans",
                             fontWeight: FontWeight.w100)),
@@ -152,26 +152,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                         sizeCH = false;
                         sizeM = true;
                         sizeG = false;
-                        item.productSize = ProductSize.M;
-                        item.productPrice = item.productPriceCalculator();
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: ChoiceChip(
-                    label: Text("Grande",
-                        style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontWeight: FontWeight.w100)),
-                    selected: sizeG,
-                    onSelected: (bool selected) {
-                      setState(() {
-                        sizeCH = false;
-                        sizeM = false;
-                        sizeG = true;
-                        item.productSize = ProductSize.G;
+                        item.productWeight = ProductWeight.KILO;
                         item.productPrice = item.productPriceCalculator();
                       });
                     },
@@ -202,7 +183,7 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           productAmount: 1,
                           productPrice: item.productPrice,
                           typeOfProduct: ProductType.BEBIDAS,
-                          productSize: item.productSize.toString(),
+                          productSize: item.productWeight.toString(),
                         ));
                         Navigator.of(context).pop();
                       },

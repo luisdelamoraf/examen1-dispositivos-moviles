@@ -1,4 +1,5 @@
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
 
 enum ProductType { BEBIDAS, GRANO, POSTRES }
@@ -6,12 +7,46 @@ enum ProductType { BEBIDAS, GRANO, POSTRES }
 class ProductRepository {
   static List<dynamic> loadProducts(ProductType prodType) {
     // ----------------------              ----------------------------//
-    // ----------------------       Tazas      ----------------------------//
+    // ----------------------       Postres     ----------------------------//
     // ----------------------              ----------------------------//
-
     if (prodType == ProductType.POSTRES) {
-    // TODO: Agregar al menos 5 productos "postres"
-    
+      return <ProductDesserts>[
+        ProductDesserts(
+          productTitle: "Pastel",
+          productDescription: "El tradicional pastel de chocolate que a todos les gusta",
+          productImage:
+              "https://i.pinimg.com/474x/ce/4e/c7/ce4ec7d3e47eccf963071430048ea0e8.jpg",
+          productAmount: 0,
+        ),
+        ProductDesserts(
+          productTitle: "Pay",
+          productDescription: "Un clásico, pay de limón.",
+          productImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnqDbJD0R-8MnIefUpSf74R-VQAkX_cevV8w&usqp=CAU",
+          productAmount: 0,
+        ),
+        ProductDesserts(
+          productTitle: "Pastel durazno",
+          productDescription: "Delicioso pastel con crema y duraznos",
+          productImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzPFZLsYwbuZdJO8SfwBjZL7Jwmk29gNDKRA&usqp=CAU",
+          productAmount: 0,
+        ),
+        ProductDesserts(
+          productTitle: "Donas",
+          productDescription: "Donas glaceadas con chispas",
+          productImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbCPhNZsrHD7b2rWyVKzJxwXgmyDR0N-O4wg&usqp=CAU",
+          productAmount: 0,
+        ),
+        ProductDesserts(
+          productTitle: "Brownies",
+          productDescription: "Ricos brownies de chocolate",
+          productImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0r-Z1yKRdDbW28m8EJdug3ZAlFivFilRtrQ&usqp=CAU",
+          productAmount: 0,
+        ),
+      ];
     }
 
     // ----------------------              ----------------------------//

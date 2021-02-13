@@ -1,16 +1,16 @@
 import 'dart:ui';
+import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/drinks/item_hot_drinks.dart';
-import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/desserts/item_desserts.dart';
 
-class HotDrinksPage extends StatelessWidget {
-  final List<ProductHotDrinks> drinksList;
+class DessertsPage extends StatelessWidget {
+  final List<ProductDesserts> dessertsList;
   final List<ProductItemCart> cart;
 
-  HotDrinksPage({
+  DessertsPage({
     Key key,
-    @required this.drinksList,
+    @required this.dessertsList,
     @required this.cart,
   }) : super(key: key);
 
@@ -26,12 +26,9 @@ class HotDrinksPage extends StatelessWidget {
       ),
       body: Container(
         child: ListView.builder(
-          itemCount: drinksList.length,
+          itemCount: dessertsList.length,
           itemBuilder: (BuildContext context, int index) {
-            return ItemHotDrinks(
-              drink: drinksList[index],
-              cart: cart
-            );
+            return ItemDesserts(dessert: dessertsList[index], cart: cart);
           },
         ),
       ),
