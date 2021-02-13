@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/cart/item_cart.dart';
+import 'package:estructura_practica_1/cart/payment.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 
 class Cart extends StatefulWidget {
@@ -27,7 +28,7 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height:MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         child: Stack(
           children: <Widget>[
             Container(
@@ -45,7 +46,7 @@ class _CartState extends State<Cart> {
             Positioned(
               bottom: 0,
               child: Padding(
-                padding: const EdgeInsets.only(left:16, right: 16),
+                padding: const EdgeInsets.only(left: 16, right: 16),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -55,18 +56,20 @@ class _CartState extends State<Cart> {
                             fontWeight: FontWeight.w400,
                             fontSize: 30)),
                     Padding(
-                      padding: const EdgeInsets.only(top:4 , bottom: 4),
+                      padding: const EdgeInsets.only(top: 4, bottom: 4),
                       child: Container(
-                        width: MediaQuery.of(context).size.width *.91,
+                        width: MediaQuery.of(context).size.width * .91,
                         child: RaisedButton(
                           color: Color(0xff8B8175),
                           child: Text("PAGAR",
                               style: TextStyle(
-                                  fontFamily: "OpenSans",
-                                  fontWeight: FontWeight.w100,
-                              )
-                          ),
-                          onPressed: () {},
+                                fontFamily: "OpenSans",
+                                fontWeight: FontWeight.w100,
+                              )),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Payment(cart: widget.productsList)));
+                          },
                         ),
                       ),
                     )

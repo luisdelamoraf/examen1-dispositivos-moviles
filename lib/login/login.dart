@@ -28,8 +28,6 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 100,
               ),
-
-              //Imagen de CUPPING CON LOGO
               Image(
                 image: AssetImage("assets/images/cupping.png"),
                 height: 200,
@@ -39,9 +37,6 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 30,
               ),
-
-              //Ingresar usuario
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,10 +46,8 @@ class _LoginState extends State<Login> {
                       color: Colors.white,
                     ),
                   ),
-                  //Contenedor para el TextField
                   Container(
-                    width: MediaQuery.of(context).size.width *
-                        0.95, // para que abarque casi todo el ancho de la pantalla
+                    width: MediaQuery.of(context).size.width *0.95,
                     child: TextField(
                       controller: _usernameController,
                       decoration: InputDecoration(
@@ -70,9 +63,6 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 30,
               ),
-
-              //Ingresar el password
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -82,18 +72,15 @@ class _LoginState extends State<Login> {
                       color: Colors.white,
                     ),
                   ),
-                  //Contenedor para el TextField
                   Container(
                     width: MediaQuery.of(context).size.width *
-                        0.95, // para que abarque casi todo el ancho de la pantalla
+                        0.95,
                     child: TextField(
                       controller: _passwordController,
                       obscureText: true,
-                      //Para poner el texto dentro en blanco
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                      //Decoracion para el TextField
                       decoration: InputDecoration(
                         filled: true,
                         enabledBorder: const OutlineInputBorder(
